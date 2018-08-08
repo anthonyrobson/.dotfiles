@@ -1,0 +1,17 @@
+[color]
+  ui = auto
+
+[core]
+  editor = vim
+  excludesFile = ~/.ignore
+
+[credential]
+  helper = osxkeychain
+
+[remote]
+  pushDefault = origin
+
+[user]
+  email = anthonyrobson@me.com
+  name = Anthony Robson
+
