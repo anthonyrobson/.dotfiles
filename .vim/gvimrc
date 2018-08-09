@@ -1,0 +1,10 @@
+set antialias
+" set background=dark
+set columns=100
+set encoding=utf-8
+set guifont=Fira\ Code:h14
+set guioptions=acgm
+set lines=60
+set macligatures
+" set macthinstrokes
+

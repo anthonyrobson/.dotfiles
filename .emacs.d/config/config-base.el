@@ -60,6 +60,13 @@
 (if (executable-find "gxargs") (setq xargs-program "gxargs"))
 (if (executable-find "mdfind") (setq locate-command "mdfind"))
 
+(require 'config-ui)
+(require 'config-editing)
+(require 'config-package)
+(require 'config-comint)
+(require 'config-dired)
+(require 'config-keybinds)
+(require 'config-hooks)
 
 (provide 'config-base)
 ;;; config-base.el ends here

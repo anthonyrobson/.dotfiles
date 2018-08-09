@@ -1,0 +1,79 @@
+" General settings
+
+syntax on                              " Enable syntax highlighting
+filetype plugin indent on              " Enable filetype indentation/plugins
+
+set autoindent                         " Copy indent to next line
+set autoread                           " Autorevert changed files
+set backspace=indent,eol,start         " Allow backspace in insert mode
+set clipboard^=unnamed                 " Use system clipboard as default register
+set completeopt=menu,preview,menuone   " Insert mode completion types to allow
+set encoding=utf-8                     " Use UTF-8
+set expandtab                          " Always use spaces for tabs
+set fileencoding=utf-8                 " Use UTF-8
+set hidden                             " Do not unload abandoned buffers
+set history=100                        " Command line history size
+set hlsearch                           " Highlight search items
+set ignorecase                         " Be case-insensitive when searching
+set incsearch                          " Search incrementally
+set lazyredraw                         " No redraws when executing macros
+set nobomb                             " Do not prefix Unicode files with BOM
+set noswapfile                         " Do not make swap files
+set nowrap                             " Do not wrap long lines
+set nowritebackup                      " Do not backup before overwriting a file
+set number                             " Show line numbers
+set scrolloff=3                        " Keep this many lines above/below cursor
+set shiftwidth=4                       " Tab width
+set shortmess=lxsI                     " Do not show starting message
+set sidescrolloff=3                    " Keep this many characters left/right of cursor
+set smartcase                          " Override 'ignorecase' if search has capitals
+set smarttab                           " Delete/insert in tab-widths
+set softtabstop=4                      " Tab width
+set splitbelow                         " New horizontally-split windows go below
+set splitright                         " New vertically-split windows go on right
+set tags=./tags                        " Set where to look for tags files
+set termencoding=utf-8                 " Use UTF-8
+set ttyfast                            " Enable fast terminal connection
+set undodir=~/.vim/cache/undo          " Where to save undo files
+set undofile                           " Save undo histories
+set vb t_vb=                           " Do not beep, anywhere
+set viminfo+=n~/.vim/cache/viminfo     " Do not keep .viminfo file in ~
+set wildmenu                           " Enable completions via a menu
+set wildmode=longest,list,full         " List all completions and complete common parts
+set wrapscan                           " Wrap around file start/end when searching
+
+" Keybinds
+nnoremap ZW :w<cr>
+map <F5> :call MyCompile()<CR>
+map <F6> :call MyRun()<CR>
+
+" Functions
+func! MyCompile()
+    exec "w"
+    if &filetype == 'java'
+        exec "!javac %"
+    endif
+endfunc
+
+func! MyRun()
+    exec "w"
+    if &filetype == 'java'
+        exec "!time java -cp %:p:h %:t:r"
+    endif
+    if &filetype == 'haskell'
+        exec "!time stack runghc %"
+    endif
+endfunc
+
+" Automatic commands
+augroup auto_reload_vim_configs
+    autocmd!
+    autocmd BufWritePost vimrc source $MYVIMRC
+augroup END
+
+augroup java_files
+    autocmd!
+    autocmd Filetype java setlocal makeprg=javac\ %
+    autocmd Filetype java setlocal errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
+augroup END
+

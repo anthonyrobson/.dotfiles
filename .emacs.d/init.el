@@ -10,12 +10,9 @@
 	inhibit-startup-message t
 	initial-scratch-message nil)
   (require 'config-base (expand-file-name "config/config-base" user-emacs-directory))
+  ;; (require 'module-tex)
   (add-hook 'window-setup-hook
 	    (lambda () (setq file-name-handler-alist default-handler
 			     gc-cons-threshold (* 50 1024 1024)))))
-
-(set-face-attribute 'default nil
-		    :family "Ubuntu Mono"
-		    :height 180)
 
 ;;; init.el ends here
