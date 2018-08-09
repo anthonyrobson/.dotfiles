@@ -35,7 +35,7 @@
   :type 'float
   :group 'ar)
 
-(defcustom ar/org-directory "~/Library/Mobile\ Documents/com~apple~CloudDocs/Org"
+(defcustom ar/org-directory "~/Library/Mobile Documents/com~apple~CloudDocs/Org"
   "User's orgmode directory."
   :type 'string
   :group 'ar)

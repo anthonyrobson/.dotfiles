@@ -10,6 +10,8 @@
 	inhibit-startup-message t
 	initial-scratch-message nil)
   (require 'config-base (expand-file-name "config/config-base" user-emacs-directory))
+  (require 'module-org)
+  (require 'module-vcs)
   ;; (require 'module-tex)
   (add-hook 'window-setup-hook
 	    (lambda () (setq file-name-handler-alist default-handler

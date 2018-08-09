@@ -11,6 +11,7 @@
   (save-place-mode)
   (savehist-mode)
   ;; TODO (winner-mode)
+  ;; (set-fringe-style 0)
   (set-face-attribute 'default nil
                       :family ar/fixed-font
                       :height (* ar/font-height 10)

@@ -23,7 +23,7 @@
       tab-always-indent                'complete)
 
 (setq-default default-input-method      "greek-ibycus4"
-	      fill-column               ar/fill-column
+	            fill-column               ar/fill-column
               indent-tabs-mode          nil
               sentence-end-double-space nil
               tab-width                 ar/indent)

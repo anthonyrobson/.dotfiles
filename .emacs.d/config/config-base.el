@@ -19,6 +19,7 @@
       auto-save-list-file-prefix nil
       backup-directory-alist `((".*" . ,temporary-file-directory))
       case-fold-search t
+      completion-ignore-case t
       confirm-kill-processes nil
       create-lockfiles nil
       delete-by-moving-to-trash t
@@ -36,6 +37,7 @@
       make-backup-files nil
       message-log-max 1000
       read-buffer-completion-ignore-case t
+      read-file-name-completion-ignore-case t
       save-interprogram-paste-before-kill t
       search-default-mode #'char-fold-to-regexp
       select-enable-clipboard t
@@ -54,6 +56,8 @@
 (prefer-coding-system 'utf-8)
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
 
 (if (executable-find "gls") (setq insert-directory-program "gls"))
 (if (executable-find "gfind") (setq find-program "gfind"))

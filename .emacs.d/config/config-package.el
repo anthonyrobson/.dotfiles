@@ -1,31 +1,23 @@
 ;;; config-package.el
 
-;; (require 'package)
+(defvar bootstrap-version)
+(let ((bootstrap-file (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file :noerror :nomessage))
 
-(setq package--init-file-ensured t
-      package-archive-priorities '(("melpa" . 10)
-                                   ("org"   . 2)
-                                   ("gnu"   . 1))
-      package-archives           '(("gnu"   . "https://elpa.gnu.org/packages/")
-                                  ("melpa"  . "https://melpa.org/packages/")
-                                  ("org"    . "http://orgmode.org/elpa/"))
-      package-enable-at-startup  nil
-      package-pinned-packages    '(("org"              . "org")
-                                   ("org-plus-contrib" . "org"))
-      package-user-dir           (expand-file-name "elpa/" cache-directory))
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
 
-;; (package-initialize)
+(use-package delight
+  :straight (delight :type git :host github :repo "emacsmirror/delight"))
 
-(eval-when-compile
-  (require 'package)
-  (package-initialize)
-  (unless (package-installed-p 'use-package)
-    (package-refresh-contents)
-    (package-install 'use-package))
-  (require 'use-package)
-  (setq use-package-always-ensure t))
-
-(use-package delight)
 (delight '((eldoc-mode nil "eldoc")
            (subword-mode nil "subword")))
 

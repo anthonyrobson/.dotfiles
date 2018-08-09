@@ -28,5 +28,10 @@
 
 (advice-add 'find-file :before #'find-file-maybe-make-directories)
 
+(defun create-new-buffer ()
+  "Create a new buffer called *new*."
+  (interactive)
+  (switch-to-buffer (generate-new-buffer-name "*new*")))
+
 (provide 'config-functions)
 ;;; config-functions.el ends here

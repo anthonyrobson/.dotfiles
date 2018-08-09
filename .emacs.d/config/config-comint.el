@@ -13,7 +13,6 @@
       compilation-scroll-output        'first-error
       compilation-skip-threshold       2
       compilation-window-height        15
-      completion-ignore-case           t
       eshell-cmpl-ignore-case          t
       eshell-directory-name (expand-file-name "eshell/" cache-directory)
       eshell-error-if-no-glob          t
