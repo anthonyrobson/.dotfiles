@@ -1,5 +1,6 @@
 ;;; config-keybinds.el
 
+(global-set-key (kbd "s-SPC") #'toggle-input-method)
 (global-set-key (kbd "C-c n") #'create-new-buffer)
 (global-set-key (kbd "RET") #'newline-and-indent)
 (global-set-key (kbd "C-x C-b") #'ibuffer)

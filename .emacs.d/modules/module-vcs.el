@@ -1,13 +1,11 @@
 ;;; module-vcs.el
 
-(use-package git-gutter
-  :straight git-gutter-fringe
+(use-package diff-hl
+  :straight diff-hl
   :defer 2
-  :delight git-gutter-mode
-  :config
-  (require 'git-gutter-fringe)
-  (setq git-gutter:handled-backends '(git))
-  (global-git-gutter-mode t))
+  :init
+  (global-diff-hl-mode)
+  (add-hook 'dired-mode-hook 'diff-hl-dired-mode))
 
 (provide 'module-vcs)
 ;;; module-vcs.el ends here

@@ -7,6 +7,7 @@
   ;; (electric-quote-mode)
   (electric-pair-mode)
   (global-auto-revert-mode)
+  (global-hl-line-mode)
   ;; TODO (recentf-mode)
   (save-place-mode)
   (savehist-mode)

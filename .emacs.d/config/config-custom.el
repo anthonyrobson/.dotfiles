@@ -10,7 +10,7 @@
   :type 'int
   :group 'ar)
 
-(defcustom ar/fixed-font "Ubuntu Mono"
+(defcustom ar/fixed-font "Menlo"
   "User's preferred monospaced font."
   :type 'string
   :group 'ar)
@@ -20,7 +20,7 @@
   :type 'symbol
   :group 'ar)
 
-(defcustom ar/font-height 15
+(defcustom ar/font-height 16
   "User's preferred font height."
   :type 'int
   :group 'ar)
