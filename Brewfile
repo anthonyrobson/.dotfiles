@@ -84,6 +84,7 @@ cask 'google-chrome'
 cask 'hammerspoon'
 cask 'java'
 cask 'macvim'
+cask 'skim'
 
 cask "font-fira-code"
 cask "font-fira-mono"
