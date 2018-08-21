@@ -1,32 +1,34 @@
-;;; config-editing.el
+(setq default-input-method "greek-ibycus4"
+      hippie-expand-try-functions-list
+      '(try-expand-dabbrev
+        try-expand-dabbrev-all-buffers
+        try-expand-dabbrev-from-kill
+        try-complete-file-name-partially
+        try-complete-file-name
+        try-expand-all-abbrevs
+        try-expand-list
+        try-complete-lisp-symbol-partially
+        try-complete-lisp-symbol)
+      shift-select-mode nil)
 
-(setq auto-revert-use-notify nil
-      comment-auto-fill-only-comments  t
-      electric-quote-context-sensitive t
-      global-auto-revert-non-file-buffers t
-      hippie-expand-try-functions-list '(try-expand-dabbrev
-                                         try-expand-dabbrev-all-buffers
-                                         try-expand-dabbrev-from-kill
-                                         try-complete-file-name-partially
-                                         try-complete-file-name
-                                         try-expand-all-abbrevs
-                                         try-expand-list
-                                         try-complete-lisp-symbol-partially
-                                         try-complete-lisp-symbol)
-      hippie-expand-verbose            nil
-      require-final-newline            t
-      save-place-file                  (expand-file-name "places" cache-directory)
-      savehist-additional-variables    '(search-ring regexp-search-ring)
-      savehist-file                    (expand-file-name "history" cache-directory)
-      shift-select-mode                nil
-      standard-indent                  ar/indent
-      tab-always-indent                'complete)
-
-(setq-default default-input-method      "greek-ibycus4"
-	            fill-column               ar/fill-column
-              indent-tabs-mode          nil
+(setq-default c-basic-offset 2
+              fill-column 80
+              indent-tabs-mode nil
               sentence-end-double-space nil
-              tab-width                 ar/indent)
+              standard-indent 2
+	            tab-width 2)
+
+(use-package browse-kill-ring
+  :ensure t
+  :defer t
+  :bind (("M-y" . browse-kill-ring))
+  :config (setq browse-kill-ring-highlight-current-entry t))
+
+(use-package typo
+  :ensure t
+  :diminish typo-mode
+  :commands typo-mode
+  :hook (text-mode . typo-mode)
+  :config (setq-default typo-language "English"))
 
 (provide 'config-editing)
-;;; config-editing.el ends here

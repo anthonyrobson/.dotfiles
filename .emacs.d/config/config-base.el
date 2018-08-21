@@ -1,76 +1,76 @@
-;;; config-base.el
-
 (add-to-list 'load-path (expand-file-name "config/" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "modules/" user-emacs-directory))
-(add-to-list 'exec-path "/usr/local/bin/")
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
+(add-to-list 'exec-path "/usr/local/bin")
 
-(defconst cache-directory (expand-file-name "cache/" user-emacs-directory))
-(defconst is-a-mac (eq system-type 'darwin))
-(defconst is-a-graphical-mac (and is-a-mac (display-graphic-p)))
-
-(require 'config-functions)
+(require 'config-defs)
 (require 'config-custom)
+(require 'config-package)
 
 (setq ad-redefinition-action 'accept
       apropos-do-all t
+      auto-revert-verbose nil
       auto-save-default nil
-      auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
       auto-save-list-file-prefix nil
-      backup-directory-alist `((".*" . ,temporary-file-directory))
       case-fold-search t
       completion-ignore-case t
       confirm-kill-processes nil
       create-lockfiles nil
       delete-by-moving-to-trash t
       disabled-command-function nil
-      enable-recursive-minibuffers t
       enable-local-variables :safe
+      enable-recursive-minibuffers t
+      global-auto-revert-non-file-buffers t
       history-delete-duplicates t
-      history-length 1000
-      inhibit-default-init t
+      idle-update-delay 2
+      inhibit-compacting-font-caches t
       initial-major-mode 'fundamental-mode
       isearch-allow-scroll t
       kill-buffer-query-functions nil
       kill-do-not-save-duplicates t
-      kill-ring-max 100
+      locale-coding-system 'utf-8
       make-backup-files nil
-      message-log-max 1000
       read-buffer-completion-ignore-case t
       read-file-name-completion-ignore-case t
+      recentf-exclude '((expand-file-name package-user-dir))
+      recentf-filename-handlers '(abbreviate-file-name)
+      recentf-save-file (cache-for "recentf")
       save-interprogram-paste-before-kill t
+      save-place-file (cache-for "places")
+      savehist-additional-variables '(kill-ring
+                                      search-ring
+                                      comint-input-ring
+                                      extended-command-history
+                                      regexp-search-ring)
+      savehist-autosave-interval 180
+      savehist-file (cache-for "history")
+      savehist-save-minibuffer-history t
       search-default-mode #'char-fold-to-regexp
-      select-enable-clipboard t
-      select-enable-primary t
       temporary-file-directory "/tmp/"
-      trash-directory "~/.Trash/"
       user-full-name ar/user-full-name
       user-mail-address ar/user-mail-address
       vc-follow-symlinks t
       vc-handled-backends '(Git))
 
-(setq-default imenu-auto-rescan t)
-
 (defalias 'yes-or-no-p #'y-or-n-p)
 
 (prefer-coding-system 'utf-8)
-(set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
-(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-language-environment 'utf-8)
 (set-selection-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
 
-(if (executable-find "gls") (setq insert-directory-program "gls"))
-(if (executable-find "gfind") (setq find-program "gfind"))
-(if (executable-find "gxargs") (setq xargs-program "gxargs"))
-(if (executable-find "mdfind") (setq locate-command "mdfind"))
-
+(if is-a-mac (require 'config-macos))
 (require 'config-ui)
 (require 'config-editing)
-(require 'config-package)
-(require 'config-comint)
+(require 'config-org)
+(require 'config-shell)
 (require 'config-dired)
-(require 'config-keybinds)
+(require 'config-spelling)
 (require 'config-hooks)
+(require 'config-keybinds)
+
+(require 'config-all-prog-modes)
+(require 'config-shell-script)
 
 (provide 'config-base)
-;;; config-base.el ends here

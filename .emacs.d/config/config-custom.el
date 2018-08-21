@@ -1,78 +1,19 @@
-;;; config-custom.el
+(defvar ar/user-full-name "Anthony Robson")
+(defvar ar/user-mail-address "anthrobson@gmail.com")
 
-(defgroup ar nil
-  "My Emacs configuration."
-  :prefix "ar/"
-  :group 'local)
+(defvar ar/font-size 14)
+(defvar ar/fixed-font (font-spec :family "Menlo" :size ar/font-size))
+(defvar ar/variable-font (font-spec :family "Helvetica" :size ar/font-size))
 
-(defcustom ar/fill-column 80
-  "User's preferred fill/wrap column."
-  :type 'int
-  :group 'ar)
-
-(defcustom ar/fixed-font "Menlo"
-  "User's preferred monospaced font."
-  :type 'string
-  :group 'ar)
-
-(defcustom ar/fixed-font-weight 'regular
-  "User's preferred monospaced font weight."
-  :type 'symbol
-  :group 'ar)
-
-(defcustom ar/font-height 16
-  "User's preferred font height."
-  :type 'int
-  :group 'ar)
-
-(defcustom ar/indent 2
-  "User's preferred indent amount."
-  :type 'int
-  :group 'ar)
-
-(defcustom ar/line-spacing 0.2
-  "User's preferred line spacing."
-  :type 'float
-  :group 'ar)
-
-(defcustom ar/org-directory "~/Library/Mobile Documents/com~apple~CloudDocs/Org"
-  "User's orgmode directory."
-  :type 'string
-  :group 'ar)
-
-(defcustom ar/shell "/usr/local/bin/bash"
-  "User's preferred shell."
-  :type 'string
-  :group 'ar)
-
-(defcustom ar/user-full-name "Anthony Robson"
-  "User's full name."
-  :type 'string
-  :group 'ar)
-
-(defcustom ar/user-mail-address "anthrobson@gmail.com"
-  "User's email address."
-  :type 'string
-  :group 'ar)
-
-(defcustom ar/variable-font "Helvetica Neue"
-  "User's preferred proportional font."
-  :type 'string
-  :group 'ar)
-
-(defcustom ar/variable-font-weight 'regular
-  "User's preferred proportional font weight."
-  :type 'string
-  :group 'ar)
-
-(setq custom-buffer-done-kill t
+(setq custom-buffer-done-kill nil
       custom-buffer-verbose-help nil
-      custom-file (expand-file-name "custom.el" cache-directory)
+      custom-file (cache-for "custom.el")
+      custom-safe-themes t
+      custom-theme-directory (concat user-emacs-directory "themes/")
       custom-unlispify-menu-entries nil
       custom-unlispify-tag-names nil)
 
 (if (file-exists-p custom-file)
-  (load custom-file :no-error :no-message))
+    (load custom-file :noerror :nomessage))
 
 (provide 'config-custom)
-;;; config-custom.el ends here

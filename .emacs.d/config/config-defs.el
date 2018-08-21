@@ -1,4 +1,10 @@
-;;; config-functions.el
+(defconst cache-directory (concat user-emacs-directory "cache/"))
+(defconst is-a-mac (eq system-type 'darwin))
+(defconst my-gc-cons-threshold 52428800)
+
+(defun cache-for (file)
+  "Return the path for FILE within the `cache-directory'."
+  (concat cache-directory file))
 
 (defadvice load-theme (before clear-previous-themes activate)
   "Clear existing theme settings instead of layering them."
@@ -33,5 +39,4 @@
   (interactive)
   (switch-to-buffer (generate-new-buffer-name "*new*")))
 
-(provide 'config-functions)
-;;; config-functions.el ends here
+(provide 'config-defs)

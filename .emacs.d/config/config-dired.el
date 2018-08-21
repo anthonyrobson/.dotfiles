@@ -1,15 +1,13 @@
-;;; config-dired.el
+(use-package dired
+  :ensure nil
+  :defer t
+  :config (setq dired-auto-revert-buffer t
+                dired-dwim-target t
+                dired-recursive-copies 'always
+                dired-recursive-deletes 'top)
 
-(setq dired-auto-revert-buffer   t
-      dired-clean-up-buffers-too t
-      dired-dwim-target          t
-      dired-listing-switches     "-lhav"
-      dired-recursive-copies     'always
-      dired-recursive-deletes    'always)
-
-(if (string= (file-name-nondirectory insert-directory-program) "gls")
-    (setq dired-listing-switches
-          (concat dired-listing-switches " --group-directories-first")))
+  (if (string= insert-directory-program "gls")
+      (setq dired-listing-switches "-lhva --group-directories-first")
+    (setq dired-listing-switches "-lhva")))
 
 (provide 'config-dired)
-;;; config-dired.el ends here

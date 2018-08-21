@@ -1,55 +1,36 @@
-;;; config-hooks.el
-
 (add-hooks 'window-setup-hook
-  ;; (auto-image-file-mode)
+  (setq file-name-handler-alist default-handler
+        gc-cons-percentage 0.1
+			  gc-cons-threshold my-gc-cons-threshold)
+  (set-face-attribute 'default nil :font ar/fixed-font)
+  (set-face-attribute 'variable-pitch nil :font ar/variable-font)
+  (set-face-attribute 'mode-line nil :box nil)
+  (set-face-attribute 'mode-line-inactive nil :box nil)
   (column-number-mode)
   (delete-selection-mode)
-  ;; (electric-quote-mode)
+  (electric-indent-mode)
   (electric-pair-mode)
   (global-auto-revert-mode)
-  (global-hl-line-mode)
-  ;; TODO (recentf-mode)
   (save-place-mode)
-  (savehist-mode)
-  ;; TODO (winner-mode)
-  ;; (set-fringe-style 0)
-  (set-face-attribute 'default nil
-                      :family ar/fixed-font
-                      :height (* ar/font-height 10)
-                      :weight ar/fixed-font-weight)
-  (set-face-attribute 'variable-pitch nil
-                      :family ar/variable-font
-                      :height (+ (* ar/font-height 10) 10)
-                      :weight ar/variable-font-weight))
+  (savehist-mode))
 
-(add-hooks 'before-save-hook
-  (delete-trailing-whitespace))
+(add-hooks 'minibuffer-setup-hook (setq gc-cons-threshold most-positive-fixnum))
+(add-hooks 'minibuffer-exit-hook (setq gc-cons-threshold my-gc-cons-threshold))
+
+(add-hooks 'find-file-hook
+  (unless recentf-mode (recentf-mode) (recentf-track-opened-file)))
 
 (add-hooks 'after-save-hook
+  (check-parens)
   (executable-make-buffer-file-executable-if-script-p))
 
 (add-hooks 'text-mode-hook
   (auto-fill-mode)
-  ;; (flyspell-mode)
-  (goto-address-mode)
-  ;; (setq-default truncate-lines nil)
-  (visual-line-mode))
+  (goto-address-mode))
 
 (add-hooks 'prog-mode-hook
-  ;; (flyspell-prog-mode)
-  (subword-mode)
-  (goto-address-prog-mode)
-  (setq-default display-line-numbers t
-                ;; truncate-lines t
-                )
-  (visual-line-mode -1))
-
-(add-hooks 'minibuffer-setup-hook
-  (setq-local input-method-function nil)
-  (setq-local gc-cons-threshold most-positive-fixnum))
-
-(add-hooks 'focus-out-hook
-  (garbage-collect))
+  (set-face-attribute 'line-number nil :height (* 10 (- ar/font-size 3)))
+  ;; (setq display-line-numbers t)
+  (goto-address-prog-mode))
 
 (provide 'config-hooks)
-;;; config-hooks.el ends here
