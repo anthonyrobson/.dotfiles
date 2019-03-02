@@ -1,10 +1,11 @@
 (add-to-list 'load-path (expand-file-name "config/" user-emacs-directory))
-(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 (add-to-list 'exec-path "/usr/local/bin")
 
 (require 'config-defs)
 (require 'config-custom)
 (require 'config-package)
+
+(if is-a-mac (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH"))))
 
 (setq ad-redefinition-action 'accept
       apropos-do-all t
