@@ -17,6 +17,7 @@
       compilation-auto-jump-to-first-error t
       compilation-skip-threshold 2
       compilation-disable-input t
-      compilation-context-lines 3)
+      compilation-context-lines 3
+      explicit-shell-file-name "zsh")
 
 (provide 'config-shell)

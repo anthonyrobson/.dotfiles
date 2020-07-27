@@ -14,4 +14,5 @@
 (advice-add #'x-apply-session-resources :override #'ignore)
 
 (tool-bar-mode 0)
+
 (when (fboundp 'set-scroll-bar-mode) (set-scroll-bar-mode nil))

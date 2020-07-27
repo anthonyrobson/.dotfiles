@@ -30,7 +30,7 @@
 
 (add-hooks 'prog-mode-hook
   (set-face-attribute 'line-number nil :height (* 10 (- ar/font-size 3)))
-  ;; (setq display-line-numbers t)
+  (setq display-line-numbers t)
   (goto-address-prog-mode))
 
 (provide 'config-hooks)

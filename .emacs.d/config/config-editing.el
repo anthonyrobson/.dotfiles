@@ -16,19 +16,19 @@
               indent-tabs-mode nil
               sentence-end-double-space nil
               standard-indent 2
-	            tab-width 2)
+	      tab-width 2)
 
-(use-package browse-kill-ring
-  :ensure t
-  :defer t
-  :bind (("M-y" . browse-kill-ring))
-  :config (setq browse-kill-ring-highlight-current-entry t))
+;; (use-package browse-kill-ring
+;;   :ensure t
+;;   :defer t
+;;   :bind (("M-y" . browse-kill-ring))
+;;   :config (setq browse-kill-ring-highlight-current-entry t))
 
-(use-package typo
-  :ensure t
-  :diminish typo-mode
-  :commands typo-mode
-  :hook (text-mode . typo-mode)
-  :config (setq-default typo-language "English"))
+;; (use-package typo
+;;   :ensure t
+;;   :diminish typo-mode
+;;   :commands typo-mode
+;;   :hook (text-mode . typo-mode)
+;;   :config (setq-default typo-language "English"))
 
 (provide 'config-editing)

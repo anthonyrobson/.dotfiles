@@ -1,22 +1,28 @@
-(require 'package)
+;;; config-package.el
 
-(setq package--init-file-ensured t
-      package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")
-                         ("org" . "https://orgmode.org/elpa/"))
-      package-archive-priorities '(("org" . 10)
-                                   ("melpa" . 9)
-                                   ("gnu" . 5))
-      package-user-dir (cache-for "elpa/"))
+(setq straight-cache-autoloads t
+      straight-check-for-modifications '(check-on-save)
+      straight-repository-branch "develop")
 
-(package-initialize)
+;; bootstrap straight
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+(straight-use-package 'use-package)
 
-(require 'use-package)
+(setq straight-use-package-by-default 1
+      use-package-always-defer t)
 
-(use-package diminish :ensure t)
+(use-package delight)
 
 (provide 'config-package)
