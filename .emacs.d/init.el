@@ -86,5 +86,5 @@
 (require 'config-hooks)
 (require 'config-keybinds)
 
-;; (require 'config-all-prog-modes)
+(require 'config-all-prog-modes)
 ;; (require 'config-shell-script)

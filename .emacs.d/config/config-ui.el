@@ -1,16 +1,17 @@
-(setq
- ;; default-frame-alist '((height . 1.0)
- ;;                       (horizontal-scroll-bars . nil)
+(setq default-frame-alist '((height . 0.8)
+                            (ns-appearance . dark)
+                            (horizontal-scroll-bars . nil)
  ;;                       (inhibit-double-buffering . t)
  ;;                       (internal-border-width . 0)
  ;;                       (left . 0)
  ;;                       (left-fringe . 10)
  ;;                       (line-spacing . 0.2)
  ;;                       (right-fringe . 10)
- ;;                       (tool-bar-lines . 0)
+                            (tool-bar-lines . 0)
  ;;                       (top . 0)
- ;;                       (vertical-scroll-bars . nil)
- ;;                       (width . 120))
+                            (vertical-scroll-bars . nil)
+                            ;; (width . 120)
+                            )
  echo-keystrokes 0.02
  fast-but-imprecise-scrolling t
  frame-resize-pixelwise t
@@ -31,7 +32,14 @@
  x-stretch-cursor t
  x-underline-at-descent-line t)
 
-(setq-default bidi-display-reordering nil)
+(setq-default bidi-display-reordering nil
+              display-line-numbers-width 4)
+
+(use-package darkokai-theme
+  :defer nil
+  :config
+  (setq-default darkokai-blue-tint t)
+  (load-theme 'darkokai t))
 
 ;; (use-package avy
 ;;   :ensure t

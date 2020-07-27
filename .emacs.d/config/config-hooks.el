@@ -2,6 +2,9 @@
   (setq file-name-handler-alist default-handler
         gc-cons-percentage 0.1
 			  gc-cons-threshold my-gc-cons-threshold)
+  (when (fboundp 'mac-auto-operator-composition-mode)
+    (mac-auto-operator-composition-mode))
+  (set-fringe-style 0)
   (set-face-attribute 'default nil :font ar/fixed-font)
   (set-face-attribute 'variable-pitch nil :font ar/variable-font)
   (set-face-attribute 'mode-line nil :box nil)

@@ -16,7 +16,11 @@
               indent-tabs-mode nil
               sentence-end-double-space nil
               standard-indent 2
-	      tab-width 2)
+	            tab-width 2)
+
+;; https://github.com/Wilfred/deadgrep
+(use-package deadgrep
+  :bind ("C-c S" . deadgrep))
 
 ;; (use-package browse-kill-ring
 ;;   :ensure t

@@ -1,8 +1,8 @@
 (defvar ar/user-full-name "Anthony Robson")
 (defvar ar/user-mail-address "anthrobson@gmail.com")
 
-(defvar ar/font-size 14)
-(defvar ar/fixed-font (font-spec :family "Menlo" :size ar/font-size))
+(defvar ar/font-size 12)
+(defvar ar/fixed-font (font-spec :family "Fira Code" :size ar/font-size))
 (defvar ar/variable-font (font-spec :family "Helvetica" :size ar/font-size))
 
 (setq custom-buffer-done-kill nil

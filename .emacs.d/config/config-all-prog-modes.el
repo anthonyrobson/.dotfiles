@@ -6,4 +6,7 @@
   :config (setq eldoc-echo-area-use-multiline-p t
                 eldoc-idle-delay 0.5))
 
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
 (provide 'config-all-prog-modes)
